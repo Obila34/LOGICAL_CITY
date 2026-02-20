@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <meta name="description" content="Experience Unique Craftsmanship - LogicalCity">
+    <title>Our Team</title>
+    <meta name="description" content="...Tailored Experience...">
     <link rel="icon" type="image/png" href="uploads/logo_1767762447.png">
 
     <!-- CSS Libraries -->
@@ -25,6 +25,12 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
+        .bg-dark-green { background-color: #1a3a2a !important; }
+        .bg-gold { background-color: #C5A059 !important; }
+
 
         /* --- NAVBAR STYLES --- */
         .navbar {
@@ -98,127 +104,7 @@
             .hero-title-text { font-size: 2rem; }
         }
     </style>
-
-<style>
-    /* Hero Override */
-    .page-hero {
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        padding-bottom: 5rem;
-    }
-
-    /* Overlap Card Styling (Main Intro) */
-    .about-overlap-card {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        padding: 3rem;
-        margin-top: -5rem; /* Pulls content up over hero */
-        position: relative;
-        z-index: 10;
-        border-top: 5px solid var(--color-safari-gold);
-    }
-
-    /* Story/Intro Section Images */
-    .intro-img-container {
-        position: relative;
-        padding: 1rem;
-    }
-    .intro-img {
-        border-radius: 4px;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        border: 8px solid #fff;
-        width: 100%;
-        object-fit: cover;
-    }
-    .intro-badge {
-        position: absolute;
-        bottom: -20px;
-        right: -20px;
-        background: var(--color-safari-gold);
-        color: #fff;
-        padding: 1.5rem;
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-weight: bold;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        font-family: "Playfair Display", serif;
-        font-size: 1rem;
-        line-height: 1.2;
-    }
-
-    /* CEO Section */
-    .ceo-section {
-        background-color: #f8f9fa;
-        position: relative;
-        overflow: hidden;
-    }
-    .ceo-img-wrapper {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .ceo-img {
-        width: 100%;
-        height: auto;
-        transition: transform 0.5s ease;
-    }
-    .ceo-img-wrapper:hover .ceo-img {
-        transform: scale(1.03);
-    }
-    .ceo-quote {
-        border-left: 4px solid var(--color-safari-gold);
-        padding-left: 1.5rem;
-        font-style: italic;
-        color: #555;
-        background: #fff;
-        padding: 20px;
-        border-radius: 0 8px 8px 0;
-        margin-top: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    /* Values Cards (Why Choose Us) */
-    .value-card {
-        background: #fff;
-        padding: 2rem 1.5rem;
-        border-bottom: 3px solid var(--color-safari-gold);
-        height: 100%;
-        transition: transform 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Pushes image to bottom */
-    }
-    .value-card:hover {
-        transform: translateY(-10px);
-    }
-    .value-img-container {
-        margin-top: 1.5rem;
-        overflow: hidden;
-        border-radius: 8px;
-        height: 180px; /* Fixed height for consistency */
-    }
-    .value-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 991px) {
-        .page-hero { padding-bottom: 6rem; }
-        .about-overlap-card { margin-top: -4rem; padding: 2rem 1.5rem; }
-        .intro-badge { width: 90px; height: 90px; font-size: 0.8rem; right: 0; }
-    }
-</style></head>
+    </head>
 <body>
 
 <!-- Navigation -->
@@ -235,7 +121,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item"><a class="nav-link " href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="about.php">About Us</a></li>
+                <li class="nav-item"><a class="nav-link " href="about.php">About Us</a></li>
 
                 <!-- Tailoring Dropdown -->
                 <li class="nav-item dropdown">
@@ -246,7 +132,7 @@
                         <li><a class="dropdown-item " href="tailored_experience.php">...Tailored Experience...</a></li>
                         <li><a class="dropdown-item " href="process.php">How We Work</a></li>
                         <li><a class="dropdown-item " href="pricing.php">Starting Prices</a></li>
-                        <li><a class="dropdown-item " href="team.php">Our Team</a></li>
+                        <li><a class="dropdown-item active" href="team.php">Our Team</a></li>
                     </ul>
                 </li>
 
@@ -272,8 +158,8 @@
                 </div>
                 <div class="chalk-track"><div class="chalk-line"></div></div>
                 <div class="hero-center-text">
-                    <h1 class="hero-title-text" data-aos="zoom-in">About Us</h1>
-                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Experience Unique Craftsmanship - LogicalCity</p>
+                    <h1 class="hero-title-text" data-aos="zoom-in">Our Team</h1>
+                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">...Tailored Experience...</p>
                 </div>
                 <div class="chalk-track">
                     <div class="chalk-line"></div>
@@ -283,143 +169,110 @@
         </div>
     </section>
 
-<!-- 2. MAIN INTRO (Overlapping Split Layout) -->
+<style>
+    /* Hero Section */
+    .team-hero-container {
+        position: relative;
+        margin-bottom: 5rem;
+    }
+    .team-hero-img {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center;
+        border-bottom: 5px solid var(--color-safari-gold, #c5a059);
+    }
+
+    /* Individual Cards */
+    .team-card {
+        border: none;
+        background: transparent;
+        transition: transform 0.3s ease;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .team-card:hover {
+        transform: translateY(-5px);
+    }
+    .team-img-wrapper {
+        width: 100%;
+        aspect-ratio: 3 / 4; /* Portrait ratio */
+        overflow: hidden;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .team-member-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        filter: grayscale(10%);
+    }
+    .team-card:hover .team-member-img {
+        transform: scale(1.03);
+        filter: grayscale(0%);
+    }
+    .team-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #222;
+    }
+    .team-designation {
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        color: var(--color-safari-gold, #c5a059);
+        font-weight: 600;
+    }
+
+    /* Responsive adjustment */
+    @media (max-width: 768px) {
+        .team-hero-img { height: 50vh; }
+    }
+</style>
+
+<!-- HERO SECTION -->
+<div class="team-hero-container">
+            <img src="uploads/team/team_hero_1768808065.jpg" class="team-hero-img" alt="Our Team">
+
+    <div class="container mt-5 text-center" data-aos="fade-up">
+        <h1 class="display-4 font-serif mb-3">Our Team</h1>
+                    <p class="lead text-muted fst-italic">The people behind the craftsmanship</p>
+                <div class="mx-auto mt-4" style="width: 60px; height: 3px; background-color: var(--color-safari-gold, #c5a059);"></div>
+    </div>
+</div>
+
+<!-- MEMBERS GRID -->
 <section class="pb-5">
     <div class="container">
-        <!-- The Overlap Card Wrapper -->
-        <div class="about-overlap-card">
-            <div class="row align-items-center g-5">
-                <!-- Text Side -->
-                <div class="col-lg-6" data-aos="fade-right">
-                    <!-- Clean Gold Header -->
-                    <h2 class="display-5 text-dark font-heading mb-4">We are Logical City</h2>
-
-                    <div class="story-content text-secondary">
-                        <p><br data-start="265" data-end="268">
-We are a luxury bespoke tailoring house based in <strong data-start="317" data-end="335">Nairobi, Kenya</strong>, specializing in <b>Bespoke Tailored Garments </b>and accessories for both men and women. From custom-fit suits and shirts to sophisticated blazers, trousers and curated accessories, we are the brand of choice for individuals who seek refinement, quality, and a truly <b>...<em data-start="592" data-end="613">Tailored Experience..</em>. .</b> At Logical City, opulence isn’t an add-on — it’s the foundation of everything we do. We combine meticulous craftsmanship with a deep understanding of style so that every piece we create reflects not just a perfect fit but a distinct personality and confidence. Logical City has built long-standing relationships with clients locally and abroad, working closely with individuals of diverse orientations, culture, body shapes, styles, and sartorial aspirations to create garments that feel as personal as persona. Every piece is <b>EXCEPTIONAL.</b></p> <!-- HTML Allowed -->
-                    </div>
-                </div>
-
-                <!-- Image Side -->
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="intro-img-container">
-                        <!-- Use image from DB if available, else default -->
-                        <img src="uploads/about/sect_1_1768320070.jpg" alt="LogicalCity Workshop" class="intro-img">
-                        <div class="intro-badge">
-                            <span>...<br>Tailored<br>Experience<br>...</span>
+        <div class="row justify-content-center">
+                                                <div class="col-sm-6 col-lg-3" data-aos="fade-up">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="uploads/team/staff_696ddde399124.jpg" alt="Nelson Mandela" class="team-member-img" loading="lazy">
+                            </div>
+                            <h3 class="team-name">Nelson Mandela</h3>
+                            <div class="team-designation">CEO</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 3. MEET THE CEO -->
-<section class="ceo-section py-5">
-    <div class="container py-lg-4">
-        <div class="row align-items-center g-5">
-
-            <!-- CEO Image (Now on Left) -->
-            <div class="col-lg-5" data-aos="fade-right">
-                <div class="ceo-img-wrapper">
-                    <img src="uploads/about/sect_7_1768763107.jpeg" alt="Mandela - CEO" class="ceo-img">
-                </div>
-            </div>
-
-            <!-- CEO Content (Now on Right) -->
-            <div class="col-lg-7" data-aos="fade-left">
-                <!-- Clean Gold Header -->
-                <h2>Meet the CEO,</h2>
-                <h2 class="font-heading display-6 text-dark mb-4">&#039;NELSON MANDELA&#039;</h2>
-
-                <div class="text-secondary mb-4">
-                    <p>Nelson Mandela, the CEO of Logical City, is a dynamic fashion entrepreneur and textile industry leader with a strong vision for redefining contemporary African clothing through quality craftsmanship, innovation, and authentic design. Under his leadership, Logical City has established itself as a growing clothing brand known for producing stylish, well-tailored garments that blend modern trends with African-inspired aesthetics, catering to both local and international markets. Nelson is deeply involved in every stage of the production process, from design and fabric selection to quality control and brand development, ensuring that every piece reflects the company’s commitment to opulence. He is passionate about empowering local artisans and supporting sustainable manufacturing practices, working closely with skilled tailors and suppliers to build a value chain that benefits the community while maintaining high production standards. Through strategic marketing, customer-focused service, and continuous product innovation, Nelson continues to steer Logical City toward becoming a recognizable fashion label that represents Kenya’s creativity and entrepreneurial spirit on the global stage.</p>                </div>
-
-                <div class="ceo-quote">
-                    "Fashion is not just about what you wear, it is a statement of who you are without having to speak. At LogicalCity, we craft that statement with precision."
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 4. WHY CHOOSE US (Values with Images Below Text) -->
-<section class="py-5 my-lg-5">
-    <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h6 class="text-gold text-uppercase fw-bold">The LogicalCity Difference</h6>
-            <h2 class="font-heading display-6">Why Choose Us?</h2>
-        </div>
-
-        <div class="row g-4">
-
-            <!-- Value 4 (New Section) -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="value-card">
-                    <div>
-                        <h4 class="font-heading mb-3" style="font-size: 1.25rem;">Ethics and Professionalism</h4>
-                        <div class="text-muted small">
-                            At Logical City, integrity is woven into the very fabric of our business. We adhere to the highest standards of transparency in pricing, fair labor practices for our skilled artisans, and honest communication with our clients. We believe that true luxury is not just about the final look, but the dignified process behind its creation, ensuring respect for both the craft and the community.                        </div>
+                                    <div class="col-sm-6 col-lg-3" data-aos="fade-up">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img src="uploads/team/staff_696dde32f13f8.jpg" alt="John Mdoe" class="team-member-img" loading="lazy">
+                            </div>
+                            <h3 class="team-name">John Mdoe</h3>
+                            <div class="team-designation">Tailor</div>
+                        </div>
                     </div>
-                    <!-- Image at Bottom -->
-                    <div class="value-img-container shadow-sm">
-                        <img src="uploads/about/sect_8_1768722243.jpg" alt="Value 4" class="value-img">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Value 3 -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="value-card">
-                    <div>
-                        <h4 class="font-heading mb-3" style="font-size: 1.25rem;">Superior Craftsmanship and Long-Term Value</h4>
-                        <div class="text-muted small">
-                            Logical City delivers garments made with attention to detail, quality fabrics, and skilled craftsmanship. Unlike mass-produced clothing that wears out quickly, tailored pieces are built for durability and timeless style. For individuals seeking value for money, this means fewer replacements, better longevity, and garments that maintain their structure and elegance over time—making the ...Tailored Experience... a sage long-term investment in personal style.                        </div>
-                    </div>
-                    <!-- Image at Bottom -->
-                    <div class="value-img-container shadow-sm">
-                        <img src="uploads/about/sect_6_1767965973.jpg" alt="Value 3" class="value-img">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Value 2 -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="value-card">
-                    <div>
-                        <h4 class="font-heading mb-3" style="font-size: 1.25rem;">Personalized Style That Reflects Identity and Occasion</h4>
-                        <div class="text-muted small">
-                            At Logical City we understand that clothing is a form of personal expression. Our ...Tailored Experience... goes beyond measurements to include one-on-one image consultation, helping clients choose fabrics, cuts, colors, and designs that match their personality, profession, and occasion. Whether it’s a corporate suit, wedding attire, or statement outfit, this personalized approach ensures the final piece aligns with the client’s lifestyle and cultural context, rather than following generic fashion trends.                        </div>
-                    </div>
-                    <!-- Image at Bottom -->
-                    <div class="value-img-container shadow-sm">
-                        <img src="uploads/about/sect_5_1767965993.jpg" alt="Value 2" class="value-img">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Value 1 -->
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="0">
-                <div class="value-card">
-                    <div>
-                        <h4 class="font-heading mb-3" style="font-size: 1.25rem;">Perfect Fit Designed for Individual Body Types</h4>
-                        <div class="text-muted small">
-                            Logical City prioritizes precision and individuality, ensuring each garment is crafted to fit the client’s unique body shape and posture. In Kenya, where ready-made clothing often follows generic sizing that rarely fits perfectly, Logical City eliminates this challenge by taking detailed measurements and refining the fit through expertized bespoke tailoring. This helps to achieve enhanced comfort, confidence, and mature image appearance—making the wearer look polished and feel completely at ease as well as complete ownership of the outfit.                        </div>
-                    </div>
-                    <!-- Image at Bottom -->
-                    <div class="value-img-container shadow-sm">
-                        <img src="uploads/about/sect_4_1767966015.jpg" alt="Value 1" class="value-img">
-                    </div>
-                </div>
-            </div>
-        </div>
+                                    </div>
     </div>
 </section>
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -518,10 +371,6 @@ We are a luxury bespoke tailoring house based in <strong data-start="317" data-e
             <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center small text-white-50">
                 <div class="mb-2 mb-md-0">
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
-                </div>
-
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
                 </div>
 
                 <!-- Legal Pages Links -->

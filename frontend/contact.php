@@ -1,11 +1,39 @@
+<?php
+$success = false;
+$error = '';
 
+if (isset($_POST['submit_contact'])) {
+    $name    = htmlspecialchars(trim($_POST['name']));
+    $email   = htmlspecialchars(trim($_POST['email']));
+    $phone   = htmlspecialchars(trim($_POST['phone']));
+    $message = htmlspecialchars(trim($_POST['message']));
+
+    // Basic validation
+    if (empty($name) || empty($email) || empty($message)) {
+        $error = 'Please fill in all required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } else {
+        $to      = 'logicalclothing1@gmail.com';
+        $subject = 'New Contact Message from ' . $name;
+        $body    = "Name: $name\nEmail: $email\nPhone: $phone\n\nMessage:\n$message";
+        $headers = "From: $email\r\nReply-To: $email\r\n";
+
+        if (mail($to, $subject, $body, $headers)) {
+            $success = true;
+        } else {
+            $error = 'Failed to send message. Please try emailing us directly.';
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>...Tailored Experience...</title>
-    <meta name="description" content="Sharp Cuts | Legacy Stitches | Opulence">
+    <title>Contact Us</title>
+    <meta name="description" content="Get in touch with us and let&#039;s tailor something authentic together.">
     <link rel="icon" type="image/png" href="uploads/logo_1767762447.png">
 
     <!-- CSS Libraries -->
@@ -25,15 +53,16 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
             transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
             padding: 1.5rem 0;
         }
-        .navbar-transparent { background-color: transparent !important; box-shadow: none; }
+
         .navbar-solid { background-color: var(--color-black) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .navbar.scrolled { background-color: var(--color-black) !important; padding: 0.8rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
         .navbar-nav .nav-link {
             position: relative;
@@ -96,57 +125,156 @@
         @media (max-width: 991px) {
             .hero-logo-left { display: none !important; }
             .hero-title-text { font-size: 2rem; }
+
         }
     </style>
 
+<!-- SweetAlert2 Theme -->
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
 <style>
-    .page-hero { padding-bottom: 5rem !important; position: relative; }
-    .main-content-wrapper { margin-top: -5rem; position: relative; z-index: 20; padding-bottom: 5rem; }
+/* --- PAGE HERO --- */
+.page-hero {
+    padding-bottom: 5rem !important;
+    position: relative;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
+}
 
-    /* ZIG-ZAG CONTAINER */
-    .tailoring-main-container {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        overflow: hidden;
-    }
+/* --- CONTACT CARDS SECTION --- */
+.overlap-section {
+    position: relative;
+    z-index: 10;
+}
 
-    /* ROW STYLING */
-    .tailoring-row-wrapper {
-        padding: 0; margin: 0;
-        border-bottom: 1px dashed rgba(197, 160, 89, 0.5);
-    }
-    .tailoring-row-wrapper:last-child { border-bottom: none; }
-    .tailoring-row-wrapper:nth-child(odd) { background-color: #ffffff; }
-    .tailoring-row-wrapper:nth-child(even) { background-color: #fcfcfc; }
-    .tailoring-img-col, .tailoring-text-col { background-color: transparent !important; }
+.content-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
 
-    /* IMAGE COLUMN */
-    .tailoring-img-col {
-        display: flex; align-items: center; justify-content: center;
-        padding: 4rem; min-height: 450px;
-    }
-    .tailoring-img {
-        max-width: 100%; max-height: 450px; width: auto; height: auto;
-        object-fit: contain;
-        border: 3px solid var(--color-gold); border-radius: 2px;
-        display: block; background: #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.5s ease;
-    }
-    .tailoring-row-wrapper:hover .tailoring-img { transform: scale(1.02); }
+.content-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--color-safari-gold, #c5a059);
+    box-shadow: 0 16px 40px rgba(197, 160, 89, 0.2), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
 
-    /* TEXT COLUMN */
-    .tailoring-text-col { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
-    .tailor-subtitle { color: var(--color-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
-    .tailor-title { font-size: 2.2rem; font-weight: 300; color: #111; margin-bottom: 1.5rem; line-height: 1.2; }
-    .tailor-desc { color: #555; font-size: 1.05rem; line-height: 1.8; font-weight: 300; }
-    .tailor-desc p { margin-bottom: 1rem; }
+.content-card__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #222;
+    margin: 20px 0 15px;
+    transition: all 0.3s ease;
+}
 
-    @media (max-width: 991px) {
-        .tailoring-text-col { padding: 3rem 1.5rem; }
-        .tailoring-img-col { padding: 2rem; min-height: 350px; }
-    }
+.content-card:hover .content-card__title { color: var(--color-safari-gold); }
+
+/* --- ICON STYLING --- */
+.icon-link {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.content-card .icon-circle {
+    background: linear-gradient(135deg, var(--color-safari-gold, #c5a059) 0%, #d4af37 100%);
+    color: #fff;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 28px rgba(197, 160, 89, 0.28);
+}
+
+.icon-link:hover .icon-circle {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* --- FORM STYLING --- */
+.modern-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.modern-input {
+    border: 2px solid #e0e0e0 !important;
+    background: #fafafa !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    color: #222 !important;
+}
+
+.modern-input:focus {
+    background: #fff !important;
+    border-color: var(--color-safari-gold) !important;
+    box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15) !important;
+    outline: none !important;
+}
+
+/* --- BUTTON --- */
+.btn-submit-custom {
+    background: linear-gradient(135deg, #222 0%, #1a1a1a 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    padding: 15px 35px !important;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+.btn-submit-custom:hover {
+    background: linear-gradient(135deg, var(--color-safari-gold), #d4af37) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 14px 36px rgba(197, 160, 89, 0.35) !important;
+}
+
+/* --- INFO & MAP --- */
+.info-detail-box {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+    transition: transform 0.3s;
+}
+.info-detail-box:hover { transform: translateY(-3px); border-color: var(--color-safari-gold); }
+
+.info-icon { color: var(--color-safari-gold); margin-right: 10px; }
+
+.map-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    height: 400px;
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .content-card { padding: 30px 20px; }
+    .map-frame { height: 300px; }
+}
 </style></head>
 <body>
 
@@ -172,7 +300,7 @@
                         Tailoring
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tailoringDropdown">
-                        <li><a class="dropdown-item active" href="tailored_experience.php">...Tailored Experience...</a></li>
+                        <li><a class="dropdown-item " href="tailored_experience.php">...Tailored Experience...</a></li>
                         <li><a class="dropdown-item " href="process.php">How We Work</a></li>
                         <li><a class="dropdown-item " href="pricing.php">Starting Prices</a></li>
                         <li><a class="dropdown-item " href="team.php">Our Team</a></li>
@@ -185,7 +313,7 @@
                 <li class="nav-item"><a class="nav-link " href="gallery.php">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link " href="testimonials.php">Testimonials</a></li>
 
-                <li class="nav-item"><a class="nav-link " href="contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contact.php">Contact Us</a></li>
             </ul>
         </div>
     </div>
@@ -201,8 +329,8 @@
                 </div>
                 <div class="chalk-track"><div class="chalk-line"></div></div>
                 <div class="hero-center-text">
-                    <h1 class="hero-title-text" data-aos="zoom-in">...Tailored Experience...</h1>
-                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Sharp Cuts | Legacy Stitches | Opulence</p>
+                    <h1 class="hero-title-text" data-aos="zoom-in">Contact Us</h1>
+                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Get in touch with us and let's tailor something authentic together.</p>
                 </div>
                 <div class="chalk-track">
                     <div class="chalk-line"></div>
@@ -212,98 +340,179 @@
         </div>
     </section>
 
-<div class="main-content-wrapper">
+<!-- CONTACT CARDS SECTION -->
+<section class="overlap-section py-5">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+
+            <!-- PHONE CARD -->
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="content-card">
+                                        <a href="tel:+254727678190" class="icon-link" >
+                        <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
+                    </a>
+
+                    <h4 class="content-card__title">Call Us</h4>
+                    <div class="contact-info-section">
+                                                    <div class="contact-info-item">
+                                <span class="contact-info-item__label">Phone</span>
+                                <a href="tel:+254727678190" class="contact-link contact-info-item__value">
+                                    +254727678190                                </a>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- EMAIL CARD -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="content-card">
+                                        <a href="mailto:logicalclothing1@gmail.com" class="icon-link" >
+                        <div class="icon-circle"><i class="fas fa-envelope-open-text"></i></div>
+                    </a>
+
+                    <h4 class="content-card__title">Email Us</h4>
+                    <div class="contact-info-section">
+                                                     <div class="contact-info-item">
+                                <span class="contact-info-item__label">Email</span>
+                                <a href="mailto:logicalclothing1@gmail.com" class="contact-link contact-info-item__value">
+                                    logicalclothing1@gmail.com                                </a>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- WHATSAPP CARD -->
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="content-card">
+                    <a href="https://wa.me/254727678190?text=Hello+Logical+City%21" target="_blank" rel="noopener noreferrer" class="icon-link">
+                        <div class="icon-circle"><i class="fab fa-whatsapp"></i></div>
+                    </a>
+
+                    <h4 class="content-card__title">WhatsApp</h4>
+                    <div class="contact-info-section">
+                        <div class="contact-info-item" style="border: none;">
+                            <span class="contact-info-item__label">Chat With Us</span>
+                            <a href="https://wa.me/254727678190?text=Hello+Logical+City%21" target="_blank" rel="noopener noreferrer" class="contact-link contact-info-item__value">
+                                +254727678190                            </a>
+                            <div class="mt-3">
+                                <a href="https://wa.me/254727678190?text=Hello+Logical+City%21" target="_blank" rel="noopener noreferrer" class="btn btn-outline-safari btn-sm">
+                                    <i class="fab fa-whatsapp me-2"></i> Start Chat
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- MAP & FORM SECTION -->
+<section class="py-5 mb-5 bg-white">
     <div class="container">
 
-                    <div class="tailoring-main-container">
+        <div class="row g-5 align-items-stretch">
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
-                                                                    <img src="uploads/tailoring/e0586aee83f08d7466621a08b47c8f91.jpg" alt="The Logical City Philosophy" class="tailoring-img">
-                                                            </div>
+            <!-- LEFT: CONTACT FORM -->
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="pe-lg-3">
+                    <h3 class="mb-2 fw-bold text-dark-green">Send a Message</h3>
+                    <p class="text-muted mb-4">Have a question? Fill out the form below and we'll be in touch shortly.</p>
 
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">MADE IN KENYA, WORLD-CLASS STANDARDS</span>
-
-                                    <h3 class="tailor-title">The Logical City Philosophy</h3>
-                                    <div class="tailor-desc">
-                                        <p>At LogicalCity, we believe that true elegance is not about standing out, but being remembered. In the bustling heart of Nairobi, a suit is not just clothing—it is your armor. We blend traditional Savile Row tailoring techniques with a modern African aesthetic.</p><p>Whether you are commanding a boardroom in Westlands or attending a wedding in Karen, our goal is to create a garment that is authentically yours, constructed with precision and passion right here in Kenya.</p>                                    </div>
-                                </div>
+                    <form method="POST" action="" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label class="modern-label" for="name">Your Name *</label>
+                                <input type="text" id="name" name="name" class="form-control modern-input" placeholder="John Doe" required value="">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label class="modern-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-control modern-input" placeholder="+27 123 456 7890" value="">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
-                                                                    <img src="uploads/tailoring/2c8ef12aa9c75243be066379bfe38ed0.jpg" alt="The Fabric Selection" class="tailoring-img">
-                                                            </div>
+                        <div class="mb-4">
+                            <label class="modern-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control modern-input" placeholder="your@email.com" required value="">
+                        </div>
 
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">SOURCED GLOBALLY, TAILORED LOCALLY</span>
+                        <div class="mb-4">
+                            <label class="modern-label" for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control modern-input" rows="5" placeholder="Your message here..." required></textarea>
+                        </div>
 
-                                    <h3 class="tailor-title">The Fabric Selection</h3>
-                                    <div class="tailor-desc">
-                                        <p>The foundation of any great suit is the fabric. We have curated an exclusive collection of cloths suited for the unique East African climate. We offer breathable linens perfect for the coastal heat of Mombasa, and crisp, lightweight Italian wools ideal for Nairobi’s temperate weather.</p><p>Choose from over 500 swatches including Super 120s wools, Egyptian cottons, and luxury blends from the world’s finest mills including Vitale Barberis Canonico and Holland & Sherry.</p>                                    </div>
-                                </div>
+                        <button type="submit" name="submit_contact" class="btn btn-submit-custom px-5 py-3 w-100">
+                            Send Message <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- RIGHT: MAP & ADDRESS -->
+            <div class="col-lg-6" data-aos="fade-left">
+
+                <!-- Google Map -->
+                                    <h3 class="mb-3 fw-bold text-dark-green">Our Location</h3>
+                    <div class="map-frame mb-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7977.628205357405!2d36.81375609357909!3d-1.2855355999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f110023e77d8f%3A0xe35eb4fd6c0bbea3!2sJubilee%20Exchange%20House!5e0!3m2!1sen!2ske!4v1767618367374!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+
+                <!-- Address & Hours -->
+                <div class="row mt-4">
+                                            <div class="col-md-6 mb-4">
+                            <div class="info-detail-box">
+                                <h5 class="fw-bold text-uppercase">
+                                    <i class="fas fa-map-marker-alt info-icon"></i> Physical Address
+                                </h5>
+                                <div class="wysiwyg-content ps-2 text-muted">
+                                    <p>Kaunda Street</p><p>Jubilee Exchange Building</p><p>6th Floor, Suite 635</p>                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
-                                                                    <img src="uploads/tailoring/46f58d249fa5c86db6316beaa03a58ea.jpg" alt="The Finer Details" class="tailoring-img">
-                                                            </div>
-
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">PERSONALIZATION IS KEY</span>
-
-                                    <h3 class="tailor-title">The Finer Details</h3>
-                                    <div class="tailor-desc">
-                                        <p>What separates a LogicalCity suit from the rest is the attention to detail. This is where your personality shines through. You have full control over the finishing touches:</p><ul><li>Contrast buttonhole stitching</li><li>Monogramming your initials on the cuff or inside pocket</li><li>Vibrant, custom linings (Ankara prints or silk solids)</li><li>Functional cuff buttons (surgeon&apos;s cuffs)</li></ul><p>These subtle signatures are the mark of a true bespoke garment.</p>                                    </div>
-                                </div>
+                                            <div class="col-md-6 mb-4">
+                            <div class="info-detail-box">
+                                <h5 class="fw-bold text-uppercase">
+                                    <i class="far fa-clock info-icon"></i> Business Hours
+                                </h5>
+                                <div class="ps-2 text-muted">
+                                    <div class="wysiwyg-content">
+                                        Mon - Sat 8.00am - 6.30pm                                    </div>
+                                                                            <span class="badge bg-warning text-dark small mt-2">
+                                            By Appointment Only
+                                        </span>
+                                                                    </div>
                             </div>
                         </div>
-                    </div>
+                                    </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
-                                                                    <img src="uploads/tailoring/d5bdda9623af524940207af3346a95f2.jpg" alt="The Consultation and Measure" class="tailoring-img">
-                                                            </div>
-
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">ENGINEERING YOUR PERFECT FIT</span>
-
-                                    <h3 class="tailor-title">The Consultation and Measure</h3>
-                                    <div class="tailor-desc">
-                                        Ready-to-wear is made for everyone; Made-to-Measure is made for you. Our process begins with a personal consultation to understand your lifestyle, your posture, and your preferences. We take over 20 distinct body measurements and assess your profile to ensure the garment complements your silhouette. We discuss lapel widths, button placements, and pant breaks to ensure the final fit is contemporary yet timeless.                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                            </div>
-
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<!-- SweetAlert2 Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    <?php if ($success): ?>
+    Swal.fire({
+        icon: 'success',
+        title: 'Message Sent!',
+        text: 'Thank you! We will get back to you shortly.',
+        confirmButtonColor: '#C5A059'
+    });
+    <?php elseif (!empty($error)): ?>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: '<?= $error ?>',
+        confirmButtonColor: '#C5A059'
+    });
+    <?php endif; ?>
+</script>
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+    <footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -404,9 +613,6 @@
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
                 </div>
 
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
-                </div>
 
                 <!-- Legal Pages Links -->
                 <div>

@@ -25,6 +25,10 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
+        .bg-dark-green { background-color: #1a3a2a !important; }
+        .bg-gold { background-color: #C5A059 !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
@@ -246,7 +250,7 @@
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -347,9 +351,6 @@
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
                 </div>
 
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
-                </div>
 
                 <!-- Legal Pages Links -->
                 <div>

@@ -25,15 +25,15 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+        .text-gold { color: #C5A059 !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
             transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
             padding: 1.5rem 0;
         }
-        .navbar-transparent { background-color: transparent !important; box-shadow: none; }
+
         .navbar-solid { background-color: var(--color-black) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .navbar.scrolled { background-color: var(--color-black) !important; padding: 0.8rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
         .navbar-nav .nav-link {
             position: relative;
@@ -2167,7 +2167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -2268,9 +2268,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
                 </div>
 
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
-                </div>
 
                 <!-- Legal Pages Links -->
                 <div>

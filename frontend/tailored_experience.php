@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bespoke Suits</title>
-    <meta name="description" content="...Tailored Experience...">
+    <title>...Tailored Experience...</title>
+    <meta name="description" content="Sharp Cuts | Legacy Stitches | Opulence">
     <link rel="icon" type="image/png" href="uploads/logo_1767762447.png">
 
     <!-- CSS Libraries -->
@@ -25,6 +25,11 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
+        .bg-dark-green { background-color: #1a3a2a !important; }
+        .bg-gold { background-color: #C5A059 !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
@@ -98,7 +103,56 @@
             .hero-title-text { font-size: 2rem; }
         }
     </style>
-    </head>
+
+<style>
+    .page-hero { padding-bottom: 5rem !important; position: relative; }
+    .main-content-wrapper { margin-top: -5rem; position: relative; z-index: 20; padding-bottom: 5rem; }
+
+    /* ZIG-ZAG CONTAINER */
+    .tailoring-main-container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    /* ROW STYLING */
+    .tailoring-row-wrapper {
+        padding: 0; margin: 0;
+        border-bottom: 1px dashed rgba(197, 160, 89, 0.5);
+    }
+    .tailoring-row-wrapper:last-child { border-bottom: none; }
+    .tailoring-row-wrapper:nth-child(odd) { background-color: #ffffff; }
+    .tailoring-row-wrapper:nth-child(even) { background-color: #fcfcfc; }
+    .tailoring-img-col, .tailoring-text-col { background-color: transparent !important; }
+
+    /* IMAGE COLUMN */
+    .tailoring-img-col {
+        display: flex; align-items: center; justify-content: center;
+        padding: 4rem; min-height: 450px;
+    }
+    .tailoring-img {
+        max-width: 100%; max-height: 450px; width: auto; height: auto;
+        object-fit: contain;
+        border: 3px solid var(--color-gold); border-radius: 2px;
+        display: block; background: #fff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.5s ease;
+    }
+    .tailoring-row-wrapper:hover .tailoring-img { transform: scale(1.02); }
+
+    /* TEXT COLUMN */
+    .tailoring-text-col { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
+    .tailor-subtitle { color: var(--color-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+    .tailor-title { font-size: 2.2rem; font-weight: 300; color: #111; margin-bottom: 1.5rem; line-height: 1.2; }
+    .tailor-desc { color: #555; font-size: 1.05rem; line-height: 1.8; font-weight: 300; }
+    .tailor-desc p { margin-bottom: 1rem; }
+
+    @media (max-width: 991px) {
+        .tailoring-text-col { padding: 3rem 1.5rem; }
+        .tailoring-img-col { padding: 2rem; min-height: 350px; }
+    }
+</style></head>
 <body>
 
 <!-- Navigation -->
@@ -123,14 +177,14 @@
                         Tailoring
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tailoringDropdown">
-                        <li><a class="dropdown-item " href="tailored_experience.php">...Tailored Experience...</a></li>
+                        <li><a class="dropdown-item active" href="tailored_experience.php">...Tailored Experience...</a></li>
                         <li><a class="dropdown-item " href="process.php">How We Work</a></li>
                         <li><a class="dropdown-item " href="pricing.php">Starting Prices</a></li>
                         <li><a class="dropdown-item " href="team.php">Our Team</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link active" href="bespoke.php">Bespoke Suits</a></li>
+                <li class="nav-item"><a class="nav-link " href="bespoke.php">Bespoke Suits</a></li>
 
                 <!-- Switched Gallery and Testimonials -->
                 <li class="nav-item"><a class="nav-link " href="gallery.php">Gallery</a></li>
@@ -152,8 +206,8 @@
                 </div>
                 <div class="chalk-track"><div class="chalk-line"></div></div>
                 <div class="hero-center-text">
-                    <h1 class="hero-title-text" data-aos="zoom-in">Bespoke Suits</h1>
-                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">...Tailored Experience...</p>
+                    <h1 class="hero-title-text" data-aos="zoom-in">...Tailored Experience...</h1>
+                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Sharp Cuts | Legacy Stitches | Opulence</p>
                 </div>
                 <div class="chalk-track">
                     <div class="chalk-line"></div>
@@ -163,196 +217,98 @@
         </div>
     </section>
 
-<style>
-    /* --- CAROUSEL CONTAINER --- */
-    .bespoke-carousel-section {
-        background-color: #000; /* Black background for letterboxing */
-        animation: fadeInPage 1.5s ease-out; /* Fade in on page load */
-    }
-
-    .bespoke-carousel-item {
-        height: 85vh; /* Tall cinematic height */
-        min-height: 500px;
-        background-color: #000;
-        position: relative;
-    }
-
-    /* --- IMAGE FITTING --- */
-    .bespoke-carousel-img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* <--- KEEPS WHOLE IMAGE VISIBLE */
-        object-position: center;
-    }
-
-    /* --- SMOOTH FADE TRANSITION --- */
-    /* Override Bootstrap's default speed for a slower, elegant fade */
-    .carousel-fade .carousel-item {
-        opacity: 0;
-        transition-duration: 1.2s; /* <--- CONTROL FADE SPEED HERE */
-        transition-property: opacity;
-    }
-
-    .carousel-fade .carousel-item.active,
-    .carousel-fade .carousel-item-next.carousel-item-start,
-    .carousel-fade .carousel-item-prev.carousel-item-end {
-        opacity: 1;
-    }
-
-    /* Remove the sliding transform that sometimes conflicts with fade */
-    .carousel-fade .active.carousel-item-start,
-    .carousel-fade .active.carousel-item-end {
-        transform: translateX(0);
-        transition: transform 0s ease-in-out;
-        opacity: 0;
-    }
-
-    /* --- CAPTION STYLING --- */
-    .carousel-caption {
-        background: rgba(0, 0, 0, 0.4); /* Slight backdrop for readability */
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        bottom: 5%;
-    }
-
-    /* --- TYPOGRAPHY & ATMOSPHERE --- */
-    .bespoke-section {
-        background-color: #fff;
-        padding: 6rem 0;
-    }
-    .fancy-heading {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-        color: #2c2c2c;
-        margin-bottom: 2rem;
-        position: relative;
-        display: inline-block;
-    }
-    .fancy-heading::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 3px;
-        background: var(--color-safari-gold, #c5a059);
-        margin: 15px auto 0;
-    }
-    .drop-cap {
-        float: left;
-        font-size: 4rem;
-        line-height: 0.8;
-        padding-right: 1rem;
-        padding-top: 0.5rem;
-        font-family: 'Playfair Display', serif;
-        color: var(--color-safari-gold, #c5a059);
-    }
-    .bespoke-text {
-        font-size: 1.15rem;
-        line-height: 1.9;
-        color: #555;
-        font-weight: 300;
-        text-align: justify;
-    }
-    .signature-box {
-        margin-top: 3rem;
-        padding: 2rem;
-        border: 1px solid #eee;
-        border-left: 4px solid var(--color-safari-gold, #c5a059);
-        background: #fdfdfd;
-        font-style: italic;
-    }
-
-    /* Page Load Animation */
-    @keyframes fadeInPage {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-</style>
-
-<!-- CAROUSEL SECTION -->
-<section class="p-0 bespoke-carousel-section">
-    <!-- Added "carousel-fade" class for the fade effect -->
-    <div id="bespokeCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#bespokeCarousel" data-bs-slide-to="0" class="active"></button>
-                            <button type="button" data-bs-target="#bespokeCarousel" data-bs-slide-to="1" class=""></button>
-                            <button type="button" data-bs-target="#bespokeCarousel" data-bs-slide-to="2" class=""></button>
-                    </div>
-
-        <div class="carousel-inner">
-                                                <div class="carousel-item active bespoke-carousel-item">
-                        <img src="uploads/bespoke/suit_2609a435408bb80bdac51cb860a5d602.jpg" class="bespoke-carousel-img" alt="Bespoke Suit Detail">
-
-                                            </div>
-                                    <div class="carousel-item  bespoke-carousel-item">
-                        <img src="uploads/bespoke/suit_0386b6ef43de6841b1f3ac2d2648d30f.jpeg" class="bespoke-carousel-img" alt="Bespoke Suit Detail">
-
-                                            </div>
-                                    <div class="carousel-item  bespoke-carousel-item">
-                        <img src="uploads/bespoke/suit_7e184df5413bdc4a84ab899c463870b8.jpg" class="bespoke-carousel-img" alt="Bespoke Suit Detail">
-
-                                            </div>
-                                    </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#bespokeCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#bespokeCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-    </div>
-</section>
-
-<!-- TEXT CONTENT SECTION -->
-<section class="bespoke-section">
+<div class="main-content-wrapper">
     <div class="container">
-        <!-- Heading -->
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center" data-aos="fade-up">
-                <h1 class="fancy-heading">The Art of the Individual</h1>
-                <p class="lead text-muted mb-5">Where sartorial logic meets unbridled luxury.</p>
-            </div>
-        </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="row g-5 align-items-start">
+                    <div class="tailoring-main-container">
 
-                    <!-- Left Column with Drop Cap -->
-                    <div class="col-md-6" data-aos="fade-right">
-                        <div class="bespoke-text">
-                            <span class="drop-cap">T</span>rue bespoke is not merely about measurements; it is about architecture. At Logical City, we do not simply cover the body—we interpret the man. Every stitch is a deliberate decision, every cut a calculation designed to enhance your natural silhouette while projecting the authority you command. We reject the tyranny of the standard size. In a world of fast fashion and fleeting trends, we anchor ourselves in the permanent elegance of hand-crafted tailoring.                        </div>
-                    </div>
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
+                                                                    <img src="uploads/tailoring/e0586aee83f08d7466621a08b47c8f91.jpg" alt="The Logical City Philosophy" class="tailoring-img">
+                                                            </div>
 
-                    <!-- Right Column -->
-                    <div class="col-md-6" data-aos="fade-left">
-                        <div class="bespoke-text">
-                            Our artisans spend dozens of hours moulding fabric using traditional canvas construction, ensuring the jacket breathes and moves as a second skin. From the hand-rolled lapels to the functional buttonholes, the details whisper quality rather than shout it. Whether it is a midnight blue tuxedo for the gala or a sharp charcoal worsted for the boardroom, a Logical City bespoke commission is a garment with a soul—yours.                        </div>
-                    </div>
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">MADE IN KENYA, WORLD-CLASS STANDARDS</span>
 
-                </div>
-
-                <!-- Quote Section -->
-                                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-8">
-                        <div class="signature-box text-center">
-                            "A suit should be tight enough to show you are a man, but loose enough to prove you are a gentleman."
-                                                            <div class="mt-2 text-end text-muted small">— The Tailor&#039;s Credo</div>
-                                                    </div>
-
-                        <div class="text-center mt-5">
-                            <a href="contact.php" class="btn btn-dark btn-lg px-5 rounded-0" style="letter-spacing: 1px;">BOOK A CONSULTATION</a>
+                                    <h3 class="tailor-title">The Logical City Philosophy</h3>
+                                    <div class="tailor-desc">
+                                        <p>At LogicalCity, we believe that true elegance is not about standing out, but being remembered. In the bustling heart of Nairobi, a suit is not just clothing—it is your armor. We blend traditional Savile Row tailoring techniques with a modern African aesthetic.</p><p>Whether you are commanding a boardroom in Westlands or attending a wedding in Karen, our goal is to create a garment that is authentically yours, constructed with precision and passion right here in Kenya.</p>                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
+                                                                    <img src="uploads/tailoring/2c8ef12aa9c75243be066379bfe38ed0.jpg" alt="The Fabric Selection" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">SOURCED GLOBALLY, TAILORED LOCALLY</span>
+
+                                    <h3 class="tailor-title">The Fabric Selection</h3>
+                                    <div class="tailor-desc">
+                                        <p>The foundation of any great suit is the fabric. We have curated an exclusive collection of cloths suited for the unique East African climate. We offer breathable linens perfect for the coastal heat of Mombasa, and crisp, lightweight Italian wools ideal for Nairobi’s temperate weather.</p><p>Choose from over 500 swatches including Super 120s wools, Egyptian cottons, and luxury blends from the world’s finest mills including Vitale Barberis Canonico and Holland & Sherry.</p>                                    </div>
+                                </div>
                             </div>
-        </div>
+                        </div>
+                    </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
+                                                                    <img src="uploads/tailoring/46f58d249fa5c86db6316beaa03a58ea.jpg" alt="The Finer Details" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">PERSONALIZATION IS KEY</span>
+
+                                    <h3 class="tailor-title">The Finer Details</h3>
+                                    <div class="tailor-desc">
+                                        <p>What separates a LogicalCity suit from the rest is the attention to detail. This is where your personality shines through. You have full control over the finishing touches:</p><ul><li>Contrast buttonhole stitching</li><li>Monogramming your initials on the cuff or inside pocket</li><li>Vibrant, custom linings (Ankara prints or silk solids)</li><li>Functional cuff buttons (surgeon&apos;s cuffs)</li></ul><p>These subtle signatures are the mark of a true bespoke garment.</p>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
+                                                                    <img src="uploads/tailoring/d5bdda9623af524940207af3346a95f2.jpg" alt="The Consultation and Measure" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">ENGINEERING YOUR PERFECT FIT</span>
+
+                                    <h3 class="tailor-title">The Consultation and Measure</h3>
+                                    <div class="tailor-desc">
+                                        Ready-to-wear is made for everyone; Made-to-Measure is made for you. Our process begins with a personal consultation to understand your lifestyle, your posture, and your preferences. We take over 20 distinct body measurements and assess your profile to ensure the garment complements your silhouette. We discuss lapel widths, button placements, and pant breaks to ensure the final fit is contemporary yet timeless.                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
     </div>
-</section>
+</div>
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -453,9 +409,6 @@
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
                 </div>
 
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
-                </div>
 
                 <!-- Legal Pages Links -->
                 <div>

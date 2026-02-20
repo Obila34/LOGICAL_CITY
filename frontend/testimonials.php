@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>...Tailored Experience...</title>
-    <meta name="description" content="Sharp Cuts | Legacy Stitches | Opulence">
+    <title>TESTIMONIALS</title>
+    <meta name="description" content="Hear from clients whose stories are stitched into every garment we make.">
     <link rel="icon" type="image/png" href="uploads/logo_1767762447.png">
 
     <!-- CSS Libraries -->
@@ -25,6 +25,11 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
+        .bg-dark-green { background-color: #1a3a2a !important; }
+        .bg-gold { background-color: #C5A059 !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
@@ -100,53 +105,149 @@
     </style>
 
 <style>
-    .page-hero { padding-bottom: 5rem !important; position: relative; }
-    .main-content-wrapper { margin-top: -5rem; position: relative; z-index: 20; padding-bottom: 5rem; }
+/* --- Layout --- */
 
-    /* ZIG-ZAG CONTAINER */
-    .tailoring-main-container {
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        overflow: hidden;
-    }
+.page-hero { padding-bottom: 5rem !important; position: relative; }
 
-    /* ROW STYLING */
-    .tailoring-row-wrapper {
-        padding: 0; margin: 0;
-        border-bottom: 1px dashed rgba(197, 160, 89, 0.5);
-    }
-    .tailoring-row-wrapper:last-child { border-bottom: none; }
-    .tailoring-row-wrapper:nth-child(odd) { background-color: #ffffff; }
-    .tailoring-row-wrapper:nth-child(even) { background-color: #fcfcfc; }
-    .tailoring-img-col, .tailoring-text-col { background-color: transparent !important; }
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    /* Extra top margin to account for the popping icons */
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
 
-    /* IMAGE COLUMN */
-    .tailoring-img-col {
-        display: flex; align-items: center; justify-content: center;
-        padding: 4rem; min-height: 450px;
-    }
-    .tailoring-img {
-        max-width: 100%; max-height: 450px; width: auto; height: auto;
-        object-fit: contain;
-        border: 3px solid var(--color-gold); border-radius: 2px;
-        display: block; background: #fff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.5s ease;
-    }
-    .tailoring-row-wrapper:hover .tailoring-img { transform: scale(1.02); }
+/* --- The Card (Shoutout Style) --- */
+.testimonial-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 3.5rem 2rem 2rem; /* Top padding pushes content down for the icon */
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border-bottom: 4px solid var(--color-safari-gold);
 
-    /* TEXT COLUMN */
-    .tailoring-text-col { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
-    .tailor-subtitle { color: var(--color-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
-    .tailor-title { font-size: 2.2rem; font-weight: 300; color: #111; margin-bottom: 1.5rem; line-height: 1.2; }
-    .tailor-desc { color: #555; font-size: 1.05rem; line-height: 1.8; font-weight: 300; }
-    .tailor-desc p { margin-bottom: 1rem; }
+    /* CRITICAL: Allows the icon to float outside without being cut */
+    overflow: visible;
 
-    @media (max-width: 991px) {
-        .tailoring-text-col { padding: 3rem 1.5rem; }
-        .tailoring-img-col { padding: 2rem; min-height: 350px; }
+    /* Flex sizing */
+    flex: 1 1 350px;
+    max-width: 450px;
+    width: 100%;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+/* --- THE SHOUTOUT BADGE --- */
+.quote-badge {
+    position: absolute;
+    top: -30px; /* Pulls it halfway out of the card */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it perfectly */
+
+    width: 60px;
+    height: 60px;
+
+    /* Gold Gradient Background */
+    background: linear-gradient(135deg, var(--color-safari-gold) 0%, #b8860b 100%);
+
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+
+    /* 3D Effect Shadow */
+    box-shadow: 0 10px 20px rgba(184, 134, 11, 0.4);
+
+    /* White border to separate from page bg */
+    border: 4px solid #f8f9fa;
+    z-index: 10;
+}
+
+/* --- The Quote Text --- */
+.testimonial-card__content {
+    font-family: "Playfair Display", serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* --- Author Section --- */
+.testimonial-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px dashed rgba(0,0,0,0.1); /* Dashed line for style */
+    padding-top: 1.5rem;
+    gap: 0.5rem;
+}
+
+/* --- Initials Avatar --- */
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--color-dark-green);
+    color: var(--color-safari-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Author Meta Data --- */
+.author-info {
+    text-align: center;
+}
+
+.author-info h6 {
+    margin: 0;
+    font-weight: 800;
+    color: var(--color-dark-green);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.author-info span {
+    font-size: 0.85rem;
+    color: #777;
+    font-weight: 600;
+}
+
+/* --- Stars --- */
+.testimonial-stars {
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 4px;
+}
+.testimonial-stars i {
+    color: #ffc107;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        margin-top: 3rem;
     }
+    .testimonial-card {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+}
 </style></head>
 <body>
 
@@ -172,7 +273,7 @@
                         Tailoring
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tailoringDropdown">
-                        <li><a class="dropdown-item active" href="tailored_experience.php">...Tailored Experience...</a></li>
+                        <li><a class="dropdown-item " href="tailored_experience.php">...Tailored Experience...</a></li>
                         <li><a class="dropdown-item " href="process.php">How We Work</a></li>
                         <li><a class="dropdown-item " href="pricing.php">Starting Prices</a></li>
                         <li><a class="dropdown-item " href="team.php">Our Team</a></li>
@@ -183,7 +284,7 @@
 
                 <!-- Switched Gallery and Testimonials -->
                 <li class="nav-item"><a class="nav-link " href="gallery.php">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link " href="testimonials.php">Testimonials</a></li>
+                <li class="nav-item"><a class="nav-link active" href="testimonials.php">Testimonials</a></li>
 
                 <li class="nav-item"><a class="nav-link " href="contact.php">Contact Us</a></li>
             </ul>
@@ -201,8 +302,8 @@
                 </div>
                 <div class="chalk-track"><div class="chalk-line"></div></div>
                 <div class="hero-center-text">
-                    <h1 class="hero-title-text" data-aos="zoom-in">...Tailored Experience...</h1>
-                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Sharp Cuts | Legacy Stitches | Opulence</p>
+                    <h1 class="hero-title-text" data-aos="zoom-in">TESTIMONIALS</h1>
+                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Hear from clients whose stories are stitched into every garment we make.</p>
                 </div>
                 <div class="chalk-track">
                     <div class="chalk-line"></div>
@@ -212,98 +313,172 @@
         </div>
     </section>
 
-<div class="main-content-wrapper">
+<!-- TESTIMONIALS SECTION -->
+<section class="overlap-section pb-5">
     <div class="container">
 
-                    <div class="tailoring-main-container">
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
-                                                                    <img src="uploads/tailoring/e0586aee83f08d7466621a08b47c8f91.jpg" alt="The Logical City Philosophy" class="tailoring-img">
-                                                            </div>
+            <div class="testimonials-grid">
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
 
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">MADE IN KENYA, WORLD-CLASS STANDARDS</span>
-
-                                    <h3 class="tailor-title">The Logical City Philosophy</h3>
-                                    <div class="tailor-desc">
-                                        <p>At LogicalCity, we believe that true elegance is not about standing out, but being remembered. In the bustling heart of Nairobi, a suit is not just clothing—it is your armor. We blend traditional Savile Row tailoring techniques with a modern African aesthetic.</p><p>Whether you are commanding a boardroom in Westlands or attending a wedding in Karen, our goal is to create a garment that is authentically yours, constructed with precision and passion right here in Kenya.</p>                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- THE SHOUTOUT POP-UP BADGE -->
+                    <div class="quote-badge">
+                        <i class="fas fa-quote-left"></i>
                     </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
-                                                                    <img src="uploads/tailoring/2c8ef12aa9c75243be066379bfe38ed0.jpg" alt="The Fabric Selection" class="tailoring-img">
-                                                            </div>
-
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">SOURCED GLOBALLY, TAILORED LOCALLY</span>
-
-                                    <h3 class="tailor-title">The Fabric Selection</h3>
-                                    <div class="tailor-desc">
-                                        <p>The foundation of any great suit is the fabric. We have curated an exclusive collection of cloths suited for the unique East African climate. We offer breathable linens perfect for the coastal heat of Mombasa, and crisp, lightweight Italian wools ideal for Nairobi’s temperate weather.</p><p>Choose from over 500 swatches including Super 120s wools, Egyptian cottons, and luxury blends from the world’s finest mills including Vitale Barberis Canonico and Holland & Sherry.</p>                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- The Story -->
+                    <div class="testimonial-card__content">
+                        "They have nice outfits for both gents and ladies, so coporatic and Logical in real sense with full blown sense of fashion"
                     </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
-                                                                    <img src="uploads/tailoring/46f58d249fa5c86db6316beaa03a58ea.jpg" alt="The Finer Details" class="tailoring-img">
-                                                            </div>
+                    <!-- The Footer -->
+                    <div class="testimonial-footer">
 
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">PERSONALIZATION IS KEY</span>
+                        <!-- Initials Avatar -->
+                        <div class="author-avatar">
+                            FP                        </div>
 
-                                    <h3 class="tailor-title">The Finer Details</h3>
-                                    <div class="tailor-desc">
-                                        <p>What separates a LogicalCity suit from the rest is the attention to detail. This is where your personality shines through. You have full control over the finishing touches:</p><ul><li>Contrast buttonhole stitching</li><li>Monogramming your initials on the cuff or inside pocket</li><li>Vibrant, custom linings (Ankara prints or silk solids)</li><li>Functional cuff buttons (surgeon&apos;s cuffs)</li></ul><p>These subtle signatures are the mark of a true bespoke garment.</p>                                    </div>
-                                </div>
-                            </div>
+                        <!-- Name & Destination -->
+                        <div class="author-info">
+                            <h6>Frank Palmer</h6>
+                            <span>Client</span>
                         </div>
+
+                        <!-- Stars -->
+                        <div class="testimonial-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                    </div>
                     </div>
 
-                    <div class="tailoring-row-wrapper" data-aos="fade-up">
-                        <div class="row g-0">
-                            <!-- IMAGE COLUMN -->
-                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
-                                                                    <img src="uploads/tailoring/d5bdda9623af524940207af3346a95f2.jpg" alt="The Consultation and Measure" class="tailoring-img">
-                                                            </div>
+                </div>
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
 
-                            <!-- TEXT COLUMN -->
-                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
-                                <div>
-                                                                            <span class="tailor-subtitle">ENGINEERING YOUR PERFECT FIT</span>
-
-                                    <h3 class="tailor-title">The Consultation and Measure</h3>
-                                    <div class="tailor-desc">
-                                        Ready-to-wear is made for everyone; Made-to-Measure is made for you. Our process begins with a personal consultation to understand your lifestyle, your posture, and your preferences. We take over 20 distinct body measurements and assess your profile to ensure the garment complements your silhouette. We discuss lapel widths, button placements, and pant breaks to ensure the final fit is contemporary yet timeless.                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- THE SHOUTOUT POP-UP BADGE -->
+                    <div class="quote-badge">
+                        <i class="fas fa-quote-left"></i>
                     </div>
+
+                    <!-- The Story -->
+                    <div class="testimonial-card__content">
+                        "Top notch brand, suits made to fit the body and meet customer&#039;s specification. Never disappoints."
+                    </div>
+
+                    <!-- The Footer -->
+                    <div class="testimonial-footer">
+
+                        <!-- Initials Avatar -->
+                        <div class="author-avatar">
+                            RO                        </div>
+
+                        <!-- Name & Destination -->
+                        <div class="author-info">
+                            <h6>Ronnie Omuga</h6>
+                            <span>Client</span>
+                        </div>
+
+                        <!-- Stars -->
+                        <div class="testimonial-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                    </div>
+                    </div>
+
+                </div>
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+
+                    <!-- THE SHOUTOUT POP-UP BADGE -->
+                    <div class="quote-badge">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+
+                    <!-- The Story -->
+                    <div class="testimonial-card__content">
+                        "you are fashion design oriented"
+                    </div>
+
+                    <!-- The Footer -->
+                    <div class="testimonial-footer">
+
+                        <!-- Initials Avatar -->
+                        <div class="author-avatar">
+                            EO                        </div>
+
+                        <!-- Name & Destination -->
+                        <div class="author-info">
+                            <h6>Elisha Otieno</h6>
+                            <span>Client</span>
+                        </div>
+
+                        <!-- Stars -->
+                        <div class="testimonial-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                    </div>
+                    </div>
+
+                </div>
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+
+                    <!-- THE SHOUTOUT POP-UP BADGE -->
+                    <div class="quote-badge">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+
+                    <!-- The Story -->
+                    <div class="testimonial-card__content">
+                        "Cute clothing done here for men"
+                    </div>
+
+                    <!-- The Footer -->
+                    <div class="testimonial-footer">
+
+                        <!-- Initials Avatar -->
+                        <div class="author-avatar">
+                            SR                        </div>
+
+                        <!-- Name & Destination -->
+                        <div class="author-info">
+                            <h6>Sophie Riziki</h6>
+                            <span>Client</span>
+                        </div>
+
+                        <!-- Stars -->
+                        <div class="testimonial-stars">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                    </div>
+                    </div>
+
+                </div>
                             </div>
 
+            </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-light mt-5">
+    <div class="container text-center" data-aos="fade-up">
+        <h2 class="font-heading mb-4">Tailored Experience</h2>
+        <a href="begin-adventure.php" class="btn btn-outline-dark rounded-0 px-5 py-2">Let’s Tailor Your Style</a>
     </div>
-</div>
+</section>
 
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -402,10 +577,6 @@
             <div class="border-top border-secondary pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center small text-white-50">
                 <div class="mb-2 mb-md-0">
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
-                </div>
-
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
                 </div>
 
                 <!-- Legal Pages Links -->

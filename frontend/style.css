@@ -1,0 +1,84 @@
+.btn-outline-green {
+    border: 2px solid #1a3a2a;
+    color: #000000;
+    background: transparent;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+.btn-outline-green:hover {
+    background-color: #000000;
+    color: #C5A059;
+}
+
+/* Also add btn-gold while you're at it */
+.btn-gold {
+    background-color: #C5A059;
+    color: #000 !important;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-gold:hover {
+    background-color: #b8903a;
+    color: #000 !important;
+}
+
+.btn-gold {
+    background-color: #C5A059;
+    color: #000 !important;
+    border: 2px solid #C5A059;
+    transition: all 0.3s ease;
+}
+.btn-gold:hover {
+    background-color: black;
+    color: #C5A059 !important;
+    border: 2px solid #C5A059;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4);
+}
+/* WhatsApp Float Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff !important;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    z-index: 9998;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: #fff !important;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: #C5A059;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 9998;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.back-to-top.visible {
+    display: flex;
+}

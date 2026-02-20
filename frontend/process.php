@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
-    <meta name="description" content="...Tailored Experience...">
+    <title>...Tailored Experience...</title>
+    <meta name="description" content="Sharp Cuts | Legacy Stitches | Opulence">
     <link rel="icon" type="image/png" href="uploads/logo_1767762447.png">
 
     <!-- CSS Libraries -->
@@ -25,6 +25,10 @@
             --color-grey: #555555;
             --color-white: #ffffff;
         }
+        .text-gold { color: #C5A059 !important; }
+        .text-dark-green { color: #1a3a2a !important; }
+        .bg-dark-green { background-color: #1a3a2a !important; }
+        .bg-gold { background-color: #C5A059 !important; }
 
         /* --- NAVBAR STYLES --- */
         .navbar {
@@ -98,7 +102,56 @@
             .hero-title-text { font-size: 2rem; }
         }
     </style>
-    </head>
+
+<style>
+    .page-hero { padding-bottom: 5rem !important; position: relative; }
+    .main-content-wrapper { margin-top: -5rem; position: relative; z-index: 20; padding-bottom: 5rem; }
+
+    /* ZIG-ZAG CONTAINER */
+    .tailoring-main-container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        overflow: hidden;
+    }
+
+    /* ROW STYLING */
+    .tailoring-row-wrapper {
+        padding: 0; margin: 0;
+        border-bottom: 1px dashed rgba(197, 160, 89, 0.5);
+    }
+    .tailoring-row-wrapper:last-child { border-bottom: none; }
+    .tailoring-row-wrapper:nth-child(odd) { background-color: #ffffff; }
+    .tailoring-row-wrapper:nth-child(even) { background-color: #fcfcfc; }
+    .tailoring-img-col, .tailoring-text-col { background-color: transparent !important; }
+
+    /* IMAGE COLUMN */
+    .tailoring-img-col {
+        display: flex; align-items: center; justify-content: center;
+        padding: 4rem; min-height: 450px;
+    }
+    .tailoring-img {
+        max-width: 100%; max-height: 450px; width: auto; height: auto;
+        object-fit: contain;
+        border: 3px solid var(--color-gold); border-radius: 2px;
+        display: block; background: #fff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.5s ease;
+    }
+    .tailoring-row-wrapper:hover .tailoring-img { transform: scale(1.02); }
+
+    /* TEXT COLUMN */
+    .tailoring-text-col { padding: 5rem; display: flex; flex-direction: column; justify-content: center; }
+    .tailor-subtitle { color: var(--color-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+    .tailor-title { font-size: 2.2rem; font-weight: 300; color: #111; margin-bottom: 1.5rem; line-height: 1.2; }
+    .tailor-desc { color: #555; font-size: 1.05rem; line-height: 1.8; font-weight: 300; }
+    .tailor-desc p { margin-bottom: 1rem; }
+
+    @media (max-width: 991px) {
+        .tailoring-text-col { padding: 3rem 1.5rem; }
+        .tailoring-img-col { padding: 2rem; min-height: 350px; }
+    }
+</style></head>
 <body>
 
 <!-- Navigation -->
@@ -123,10 +176,10 @@
                         Tailoring
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="tailoringDropdown">
-                        <li><a class="dropdown-item " href="tailored_experience.php">...Tailored Experience...</a></li>
+                        <li><a class="dropdown-item active" href="tailored_experience.php">...Tailored Experience...</a></li>
                         <li><a class="dropdown-item " href="process.php">How We Work</a></li>
                         <li><a class="dropdown-item " href="pricing.php">Starting Prices</a></li>
-                        <li><a class="dropdown-item active" href="team.php">Our Team</a></li>
+                        <li><a class="dropdown-item " href="team.php">Our Team</a></li>
                     </ul>
                 </li>
 
@@ -152,8 +205,8 @@
                 </div>
                 <div class="chalk-track"><div class="chalk-line"></div></div>
                 <div class="hero-center-text">
-                    <h1 class="hero-title-text" data-aos="zoom-in">Our Team</h1>
-                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">...Tailored Experience...</p>
+                    <h1 class="hero-title-text" data-aos="zoom-in">...Tailored Experience...</h1>
+                    <p class="hero-desc-text" data-aos="fade-up" data-aos-delay="200">Sharp Cuts | Legacy Stitches | Opulence</p>
                 </div>
                 <div class="chalk-track">
                     <div class="chalk-line"></div>
@@ -163,110 +216,98 @@
         </div>
     </section>
 
-<style>
-    /* Hero Section */
-    .team-hero-container {
-        position: relative;
-        margin-bottom: 5rem;
-    }
-    .team-hero-img {
-        width: 100%;
-        max-height: 80vh;
-        object-fit: cover;
-        object-position: center;
-        border-bottom: 5px solid var(--color-safari-gold, #c5a059);
-    }
+<div class="main-content-wrapper">
+    <div class="container">
 
-    /* Individual Cards */
-    .team-card {
-        border: none;
-        background: transparent;
-        transition: transform 0.3s ease;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .team-card:hover {
-        transform: translateY(-5px);
-    }
-    .team-img-wrapper {
-        width: 100%;
-        aspect-ratio: 3 / 4; /* Portrait ratio */
-        overflow: hidden;
-        border-radius: 4px;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    .team-member-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease, filter 0.5s ease;
-        filter: grayscale(10%);
-    }
-    .team-card:hover .team-member-img {
-        transform: scale(1.03);
-        filter: grayscale(0%);
-    }
-    .team-name {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: #222;
-    }
-    .team-designation {
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 2px;
-        color: var(--color-safari-gold, #c5a059);
-        font-weight: 600;
-    }
+                    <div class="tailoring-main-container">
 
-    /* Responsive adjustment */
-    @media (max-width: 768px) {
-        .team-hero-img { height: 50vh; }
-    }
-</style>
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
+                                                                    <img src="uploads/tailoring/e0586aee83f08d7466621a08b47c8f91.jpg" alt="The Logical City Philosophy" class="tailoring-img">
+                                                            </div>
 
-<!-- HERO SECTION -->
-<div class="team-hero-container">
-            <img src="uploads/team/team_hero_1768808065.jpg" class="team-hero-img" alt="Our Team">
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">MADE IN KENYA, WORLD-CLASS STANDARDS</span>
 
-    <div class="container mt-5 text-center" data-aos="fade-up">
-        <h1 class="display-4 font-serif mb-3">Our Team</h1>
-                    <p class="lead text-muted fst-italic">The people behind the craftsmanship</p>
-                <div class="mx-auto mt-4" style="width: 60px; height: 3px; background-color: var(--color-safari-gold, #c5a059);"></div>
+                                    <h3 class="tailor-title">The Logical City Philosophy</h3>
+                                    <div class="tailor-desc">
+                                        <p>At LogicalCity, we believe that true elegance is not about standing out, but being remembered. In the bustling heart of Nairobi, a suit is not just clothing—it is your armor. We blend traditional Savile Row tailoring techniques with a modern African aesthetic.</p><p>Whether you are commanding a boardroom in Westlands or attending a wedding in Karen, our goal is to create a garment that is authentically yours, constructed with precision and passion right here in Kenya.</p>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
+                                                                    <img src="uploads/tailoring/2c8ef12aa9c75243be066379bfe38ed0.jpg" alt="The Fabric Selection" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">SOURCED GLOBALLY, TAILORED LOCALLY</span>
+
+                                    <h3 class="tailor-title">The Fabric Selection</h3>
+                                    <div class="tailor-desc">
+                                        <p>The foundation of any great suit is the fabric. We have curated an exclusive collection of cloths suited for the unique East African climate. We offer breathable linens perfect for the coastal heat of Mombasa, and crisp, lightweight Italian wools ideal for Nairobi’s temperate weather.</p><p>Choose from over 500 swatches including Super 120s wools, Egyptian cottons, and luxury blends from the world’s finest mills including Vitale Barberis Canonico and Holland & Sherry.</p>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-1 order-1">
+                                                                    <img src="uploads/tailoring/46f58d249fa5c86db6316beaa03a58ea.jpg" alt="The Finer Details" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-2 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">PERSONALIZATION IS KEY</span>
+
+                                    <h3 class="tailor-title">The Finer Details</h3>
+                                    <div class="tailor-desc">
+                                        <p>What separates a LogicalCity suit from the rest is the attention to detail. This is where your personality shines through. You have full control over the finishing touches:</p><ul><li>Contrast buttonhole stitching</li><li>Monogramming your initials on the cuff or inside pocket</li><li>Vibrant, custom linings (Ankara prints or silk solids)</li><li>Functional cuff buttons (surgeon&apos;s cuffs)</li></ul><p>These subtle signatures are the mark of a true bespoke garment.</p>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tailoring-row-wrapper" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- IMAGE COLUMN -->
+                            <div class="col-lg-6 tailoring-img-col order-lg-2 order-1">
+                                                                    <img src="uploads/tailoring/d5bdda9623af524940207af3346a95f2.jpg" alt="The Consultation and Measure" class="tailoring-img">
+                                                            </div>
+
+                            <!-- TEXT COLUMN -->
+                            <div class="col-lg-6 tailoring-text-col order-lg-1 order-2">
+                                <div>
+                                                                            <span class="tailor-subtitle">ENGINEERING YOUR PERFECT FIT</span>
+
+                                    <h3 class="tailor-title">The Consultation and Measure</h3>
+                                    <div class="tailor-desc">
+                                        Ready-to-wear is made for everyone; Made-to-Measure is made for you. Our process begins with a personal consultation to understand your lifestyle, your posture, and your preferences. We take over 20 distinct body measurements and assess your profile to ensure the garment complements your silhouette. We discuss lapel widths, button placements, and pant breaks to ensure the final fit is contemporary yet timeless.                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+
     </div>
 </div>
 
-<!-- MEMBERS GRID -->
-<section class="pb-5">
-    <div class="container">
-        <div class="row justify-content-center">
-                                                <div class="col-sm-6 col-lg-3" data-aos="fade-up">
-                        <div class="team-card">
-                            <div class="team-img-wrapper">
-                                <img src="uploads/team/staff_696ddde399124.jpg" alt="Nelson Mandela" class="team-member-img" loading="lazy">
-                            </div>
-                            <h3 class="team-name">Nelson Mandela</h3>
-                            <div class="team-designation">CEO</div>
-                        </div>
-                    </div>
-                                    <div class="col-sm-6 col-lg-3" data-aos="fade-up">
-                        <div class="team-card">
-                            <div class="team-img-wrapper">
-                                <img src="uploads/team/staff_696dde32f13f8.jpg" alt="John Mdoe" class="team-member-img" loading="lazy">
-                            </div>
-                            <h3 class="team-name">John Mdoe</h3>
-                            <div class="team-designation">Tailor</div>
-                        </div>
-                    </div>
-                                    </div>
-    </div>
-</section>
-
 
     <!-- 6. FOOTER -->
-    <footer id="contact" class="bg-dark-green text-white pt-5 pb-3">
+<footer id="contact" class="text-white pt-5 pb-3" style="background-color: black;">
         <div class="container">
             <div class="row g-5 mb-5">
 
@@ -367,9 +408,6 @@
                     Copyright &copy; 2026 Logical Clothing Ltd | All Rights Reserved.
                 </div>
 
-                <div class="mb-2 mb-md-0">
-                    Designed & Developed By: <span class="text-white" title="evansomacomosh@gmail.com">Evans</span>
-                </div>
 
                 <!-- Legal Pages Links -->
                 <div>
